@@ -1,0 +1,78 @@
+---
+title: "DataVis"
+output: html_document
+---
+
+install.packages("ggriraphExtra")
+
+
+
+```{r}
+library(ggirpahExtra)
+search()
+```
+
+##데이터 셋
+*USArrests 데이터 셋
+
+```{r}
+str(USArrests)
+
+```
+
+```{r}
+library(tibble)
+
+crime <-rownames_to_column(USArrests, var="state")
+crime$state <-tolower(crime$state)
+crime
+
+```
+
+install.packages("maps")
+
+```{r}
+library(ggplot2)
+library(maps)
+states_map <- map_data("state")
+str(states_map)
+
+```
+```{r}
+head(states_map)
+```
+```{r}
+crime$Murder
+```
+```{r}
+crime$state
+```
+
+install.packages("ggiraphExtra")
+install.packages("maps")
+install.packages("mapproj")
+
+```{r}
+library(ggiraphExtra)
+library(maps)
+library(mapproj)
+
+search()
+```
+
+
+```{r}
+library(ggiraphExtra)
+library(maps)
+library(mapproj)
+library(ggplot2)
+ggChoropleth(data=crime,
+             aes(fill=Murder,
+                 map_id=state),
+             map=states_map)
+```
+
+
+
+
+
